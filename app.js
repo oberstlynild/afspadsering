@@ -185,7 +185,7 @@ app.get('/login', (req, res) => {
 //Route for 'register new account'
 app.get('/register', (req, res) => {
     let sesh = req.session;
-    res.render('register', {title:'Ny bruger', loggedIn:sesh.loggedIn, error:null})
+    res.render('Register', {title:'Ny bruger', loggedIn:sesh.loggedIn, error:null})
 })
 
 app.get('/logout', (req, res) => {
