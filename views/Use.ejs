@@ -1,0 +1,15 @@
+<%- include('./layout/Header.ejs') %>
+<%- include('./layout/Navbar.ejs') %>
+
+<div class="add-to-diary">
+    <h1>Brug <span class="green-text">afspadsering</span></h1>
+    <form action="/remove-hours" method="post">
+        <div class="form-group">
+            <label for="time">Antal timer</label>
+            <input type="time" class="form-control" id="time" name="time">
+        </div>
+        <input type="submit" value="Brug afspadsering">
+    </form>
+</div>
+
+<%- include('./layout/Footer.ejs') %> 

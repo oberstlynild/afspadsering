@@ -1,0 +1,18 @@
+<%- include('./layout/Header.ejs') %>
+<%- include('./layout/Navbar.ejs') %>
+
+<div class="page-container">
+    <h1><%= data.title %></h1>
+    <p><%= moment(data.date).format() %></p>
+    <p class="diary-text"><%= data.description %></p>
+    <div class="settings">
+        <a href="/diary/edit/<%= data.id %>" class="edit">Rediger</a>
+
+        <form action="/data/delete/<%= data.id %>?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Slet" class="delete">
+        </form>
+    </div>
+</div>
+
+<%- include('./layout/Footer.ejs') %>

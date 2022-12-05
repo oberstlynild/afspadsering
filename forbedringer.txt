@@ -1,0 +1,2 @@
+Lav datoen om til dansk læsbar tekst
+Ændre rækkefølgen så nyeste indslag bliver vist først

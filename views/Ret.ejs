@@ -1,0 +1,24 @@
+<%- include('./layout/Header.ejs') %>
+<%- include('./layout/Navbar.ejs') %>
+
+<div class="showcase">
+    <h1>Det er ok at rette sine <span class="green-text">fejl<span></h1>
+</div>
+
+<div class="add-container">
+    <div class="diary">
+        <% data.forEach((usedHours) => {%>
+            <div class="diary-container">
+                <h2><%= usedHours.usedTime %></h2>
+                <div class="settings">
+                    <form action="/hours/delete/<%= usedHours.id %>?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="submit" value="Slet" class="delete">
+                    </form>
+                </div>
+            </div>
+        <%}) %>
+    </div>
+</div>
+
+<%- include('./layout/Footer.ejs') %>

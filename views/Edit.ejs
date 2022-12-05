@@ -1,0 +1,24 @@
+<%- include('./layout/Header.ejs') %>
+<%- include('./layout/Navbar.ejs') %>
+
+<div class="add-to-diary">
+    <h1>Rediger <span class="green-text"><%= data.title %></span></h1>
+    <form action="/diary/edit/<%= data.id %>?_method=PUT" method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="form-group">
+            <label for="title">Titel</label>
+            <input type="text" class="form-control" id="title" name="title" value="<%= data.title %>">
+        </div>
+        <div class="form-group">
+            <label for="description">Beskrivelse</label>
+            <textarea type="text" class="form-control" id="description" name="description" cols="30" rows="5"><%= data.description %></textarea>
+        </div>
+        <div class="form-group">
+            <label for="title">Dato</label>
+            <input type="datetime-local" class="form-control" id="date" name="date">
+        </div>
+        <input type="submit" value="Rediger indslag">
+    </form>
+</div>
+
+<%- include('./layout/Footer.ejs') %>

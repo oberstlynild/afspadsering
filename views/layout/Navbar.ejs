@@ -1,0 +1,19 @@
+<header>
+    <div class="container">
+        <a href="/" class="logo">EXZENTRIQ <span class="green-text">AFSPADSERING</span></a>
+        <nav>
+            <ul>
+                <li><a href="/">Hjem</a></li>
+                <li><a href="/about">Om</a></li>
+                <li><a href="/diary">Gå til afspadsering</a></li>
+                <li><a href="/ret">Ret fejl</a></li>
+                <% if (!loggedIn) { %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Registrer</a></li>
+                <% }else { %>
+                <li><a href="/logout">Logout</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,27 @@
+<%- include('./layout/Header.ejs') %>
+<%- include('./layout/Navbar.ejs') %>
+
+<div class="add-to-diary">
+    <h1>Tilføj timer til <span class="green-text">afspadsering</span></h1>
+    <form action="/add-to-diary" method="post">
+        <div class="form-group">
+            <label for="title">Titel</label>
+            <input type="text" class="form-control" id="title" name="title">
+        </div>
+        <div class="form-group">
+            <label for="description">Beskrivelse</label>
+            <textarea type="text" class="form-control" id="description" name="description" cols="30" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="startDate">Start dato</label>
+            <input type="datetime-local" class="form-control" id="startDate" name="startDate">
+        </div>
+        <div class="form-group">
+            <label for="endDate">Slut dato</label>
+            <input type="datetime-local" class="form-control" id="endDate" name="endDate">
+        </div>
+        <input type="submit" value="Tilføj til afspadsering">
+    </form>
+</div>
+
+<%- include('./layout/Footer.ejs') %> 

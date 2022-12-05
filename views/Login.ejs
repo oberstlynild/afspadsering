@@ -1,0 +1,22 @@
+<%- include('./layout/Header.ejs') %>
+<%- include('./layout/Navbar.ejs') %>
+
+<div class="add-container">
+    <div class="login-container">
+        <h2 class="page-title"><%= title %></h2><br>
+        <div class="login-form">
+            <form action="/login" method="POST">
+                <input type="text" name="username" placeholder="Brugernavn"><br><br>
+                <input type="password" name="password" placeholder="Password"><br><br>
+                <button type="submit" class="edit">Login</button>
+            </form>
+        </div>
+        <br>
+        <% if (error != null) { %>
+            <div class="login-error"><%= error %></div>
+        <% } %>
+    </div>
+</div>
+
+
+<%- include('./layout/Footer.ejs') %> 
