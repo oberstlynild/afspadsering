@@ -207,15 +207,15 @@ app.post('/create-account', async(req, res) => {
                     let passHash = await bcrypt.hash(password, salt, async(err, hash) => {
                         let newUser = Users({username:username, password:hash})
                         newUser.save()
-                        res.render('login', {error:'Please login to your new account', title:'Login', loggedIn:sesh.loggedIn})
+                        res.render('Login', {error:'Please login to your new account', title:'Login', loggedIn:sesh.loggedIn})
                     })
                 })
             } else {
-                res.render('register', {error:'Username taken', title:'Ny bruger', loggedIn:sesh.loggedIn})
+                res.render('Register', {error:'Username taken', title:'Ny bruger', loggedIn:sesh.loggedIn})
             }
         })
     }else {
-        res.render('register', {error:'Did you input shit?', title:'Ny bruger', loggedIn:sesh.loggedIn})
+        res.render('Register', {error:'Did you input shit?', title:'Ny bruger', loggedIn:sesh.loggedIn})
     }
 });
 
@@ -248,7 +248,7 @@ app.post('/login', async (req, res) => {
     if (loginSuccess === true) {
         res.redirect('/')
     }else {
-        res.render('login', {title:'Login', loggedIn:false, error:'Invalid login'})
+        res.render('Login', {title:'Login', loggedIn:false, error:'Invalid login'})
     }
 })
 
