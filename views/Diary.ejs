@@ -11,54 +11,39 @@
                 <h3 class="afspadserings-timer">Afspadserings timer</h3>
         
                 <%
+                    let totalHoursUsed = 0;
+                    let totalMinutesUsed = 0;
+
+                    usedTime.forEach(data => {
+                        [hours, minutes] = data.usedTime.split(":");
+                        totalHoursUsed += Number(hours);
+                        totalMinutesUsed += Number(minutes);
+                    })
+                    totalHoursUsed += Math.floor(totalMinutesUsed / 60);
+                    totalMinutesUsed = totalMinutesUsed % 60;
+
                     var duration = moment.duration();
         
                     data.forEach((diary) => {
                         duration += moment.duration(moment(diary.endDate).diff(moment(diary.startDate)));
                     })
                     duration = moment.duration(duration);
-                %> 
-                <p>Timer opsparet: <span><%= duration.hours().toString() + " timer og " + (duration.minutes() % 60).toString() + " minutter" %></span></p>
-                
-                <%
-                    var allTimesString;
-                    var allHours = 0;
-                    var allMinutes = 0;
-                    var addToHours = 0;
-        
-        
-                    usedTime.forEach((time) => {
-                        var allTimes = time.usedTime;
-                        var [hours, minutes] = allTimes.split(':');
-        
-                        hours = parseInt(hours);
-                        minutes = parseInt(minutes);
-        
-                        allHours += hours;
-                        allMinutes += minutes;
-        
-                        if (allMinutes / 60 >= 1) {
-                            addToHours += Math.floor(allMinutes / 60);
-                            allHours += addToHours;
-                            allMinutes = allMinutes % 60;
-                        }
-                    })
-                    var hoursLeft = duration.hours() - allHours;
-                    var minutesLeft = duration.minutes() - allMinutes;
+
+                    let hoursEarned = Math.floor(duration.asHours());
+                    let minutesEarned = duration.minutes();
+                    // let daysEarned = duration.days().toString();
+                    // hoursEarned += daysEarned * 24;
+
+                    let hoursLeft = hoursEarned - totalHoursUsed;
+                    let minutesLeft = minutesEarned - totalMinutesUsed;
                     if (minutesLeft < 0) {
                         hoursLeft -= 1;
                         minutesLeft = 60 + minutesLeft;
                     }
-                    hoursLeft = hoursLeft.toString();
-                    minutesLeft = minutesLeft.toString();
-                    allMinutes = allMinutes.toString();
-                    allHours = allHours.toString();
-                    allTimesString = allHours + ' timer og ' + allMinutes + " minutter";
-                %>
-        
-                <p>Timer brugt: <span><%= allTimesString %></span></p>
-        
-                <p>Timer tilbage: <span><%= hoursLeft + " timer og " + minutesLeft + " minutter" %></span></p>
+                %> 
+                <p>Timer opsparet: <span><%= `${hoursEarned} timer og ${minutesEarned.toString().padStart(2, '0')} minutter` %></span></p>
+                <p>Timer brugt: <span><%= `${totalHoursUsed} timer og ${totalMinutesUsed.toString().padStart(2, '0')} minutter` %></span></p>
+                <p>Timer tilbage: <span><%= `${hoursLeft} timer og ${minutesLeft.toString().padStart(2, '0')} minutter` %></span></p>
         
             </div>
         
